@@ -30,9 +30,20 @@ oc apply -k bank-knative-service/acm-resources
 
 * Cleanup
 
-```
+```bash
 oc delete -k transaction-service/acm-resources
 oc delete -k user-service/acm-resources
 oc delete -k mobile-simulator/acm-resources
 oc delete -k bank-knative-service/acm-resources
+```
+
+<hr >
+
+* Condensed version of all apply commands
+
+```bash
+oc apply -k transaction-service/acm-resources
+oc apply -k user-service/acm-resources
+oc apply -k mobile-simulator/acm-resources
+oc apply -k bank-knative-service/acm-resources
 ```
