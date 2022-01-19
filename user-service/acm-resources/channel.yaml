@@ -5,5 +5,5 @@ metadata:
   name: user-service-app-latest
   namespace: bank-infra
 spec:
-  pathname: https://github.com/waynedovey/example-bank.git
+  pathname: https://github.com/akiyamn/example-bank-rhacm.git
   type: GitHub
