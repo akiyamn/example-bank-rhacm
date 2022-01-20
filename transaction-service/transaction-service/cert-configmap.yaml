@@ -7,4 +7,3 @@ metadata:
   name: cert-configmap
   namespace: bank-infra
   resourceVersion: "7503646"
-  uid: 365dcf33-cc4a-4fc2-ba8b-3c46fe3981cf
