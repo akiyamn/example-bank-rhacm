@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: quay.io/wdovey/user-service:example-bank-1.0
+        image: quay.io/alexocc/user-service:latest
         imagePullPolicy: Always
         ports:
         - name: http-server
