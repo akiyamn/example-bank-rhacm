@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: transaction-service
-        image: quay.io/wdovey/bank-transaction-service:1.0
+        image: quay.io/alexocc/transaction-service:latest
         imagePullPolicy: Always
         ports:
         - name: http-server
