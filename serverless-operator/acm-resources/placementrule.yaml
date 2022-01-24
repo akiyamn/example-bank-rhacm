@@ -3,9 +3,9 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   labels:
-    app: mobile-simulator
-  name: mobile-simulator-placement-1
-  namespace: bank-infra
+    app: serverless-operator
+  name: serverless-operator-placement-1
+  namespace: openshift-serverless
 spec:
   clusterSelector:
     matchLabels:
