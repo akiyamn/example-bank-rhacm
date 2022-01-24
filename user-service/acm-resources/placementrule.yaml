@@ -9,4 +9,5 @@ metadata:
 spec:
   clusterSelector:
     matchLabels:
-      'environment': 'dev'
+      #'cluster.open-cluster-management.io/clusterset': 'azure-aws-clusterset'
+      environment: dev

@@ -1,0 +1,9 @@
+oc config use-context brisbane
+oc config use-context melbourne
+oc config use-context sydney
+oc config use-context control_cluster
+
+export cluster1=brisbane
+export cluster2=melbourne
+export cluster2=sydney
+export control_cluster=control_cluster

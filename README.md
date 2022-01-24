@@ -28,6 +28,12 @@ oc apply -k mobile-simulator/acm-resources
 oc apply -k bank-knative-service/acm-resources
 ```
 
+* Deploy the openshift-serverless Operator
+
+```
+oc create -f serverless-operator/acm-resources/namespace.yaml
+oc apply -k serverless-operator/acm-resources
+```
 * Cleanup
 
 ```bash
@@ -35,6 +41,7 @@ oc delete -k transaction-service/acm-resources
 oc delete -k user-service/acm-resources
 oc delete -k mobile-simulator/acm-resources
 oc delete -k bank-knative-service/acm-resources
+oc delete -k serverless-operator/acm-resources
 ```
 
 <hr >

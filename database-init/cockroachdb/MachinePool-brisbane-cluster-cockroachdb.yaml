@@ -1,0 +1,17 @@
+apiVersion: hive.openshift.io/v1
+kind: MachinePool
+metadata:
+  name: brisbane-cluster-worker
+  namespace: brisbane-cluster
+spec:
+  clusterDeploymentRef:
+    name: brisbane-cluster
+  name: worker
+  platform:
+    aws:
+      rootVolume:
+        iops: 2000
+        size: 100
+        type: io1
+      type: c5d.4xlarge
+  replicas: 3

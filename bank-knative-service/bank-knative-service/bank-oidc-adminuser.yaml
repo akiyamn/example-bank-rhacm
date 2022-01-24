@@ -1,21 +1,21 @@
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
+apiVersion: external-secrets.io/v1alpha1
+kind: ExternalSecret
 metadata:
-  annotations:
-    sealedsecrets.bitnami.com/cluster-wide: "true"
-  creationTimestamp: null
   name: bank-oidc-adminuser
   namespace: bank-infra
 spec:
-  encryptedData:
-    APP_ID_ADMIN_PASSWORD: AgCirOgWeR1QCuImoCZc0VC6PPn14YUD1lI9zdHXwXxnXDpSDjNr7E0Jq9BtnGQb3MWUqF2fq/EFaeA59OaGAzNt1WSxxdbDG1A5ORcPtaxnUbLC3v9eV4CxRS4pWw5uBHAsEL4Q4HW0p5L49/0CrFdX3o6vz3p03MnQ4jyfBZO4vKhZbQeOZlYcE9oT1tDwe1LXr6R3q4iG2D9F6EgWinVVpgduZEFLfdDA2acbSW9mYQeFbJYEq53qreMXOaYjeDNL3psRPWEYb2GoCqfz8aAf09gKnJp704BxgAhRS+e1dLMV7Xx2QdBie7PVH4YjGNbTbz+3A00A8G5B21ZGGLg/1pG5ofD+IpdzOmpvlrs0L0eyt86E0qKfSWEv4lgOsct7PpvQxgX7UYuIsMh8FG1BEPk2UbehDFAOdiuQuuTndIb2NRP4pW1oD6ifFvabvPnq4SAiCKp+MXkpyhgrpilR3qwbqAKMJIpy+iOssNnHFRwMCyOq7fp4L2s1KyoqFueO3X9C+8OGlk3MQvKWY4CLXfm2JHThehvttj3wwqn8NIet9EH7/6ZpxyimMryGQ/p/Pta6jGc/xiyflzksZVWRKDxBAL8qOmjxQA6a+QPVS4ebHXLnTIkKJmZDz767F432bXbSuLOqedwes4tcHYfMRmnu7XCqd1wWZ83yKHTaiBIxVtmGjyqQdX6KeD1y4scNMeFdkESCcQ==
-    APP_ID_ADMIN_USER: AgBiW+rlnPWgEWxPWb0ST2b9p7tuAAJCBd0bIM3ivPNbi9QIX3pjb60cdXQJbT6CFHSdZflOTWoZbsPshDc6r60crlE/WqjCyESaDgSqWKXt7MGRQrwKFt9iHEXvjP39wZHnujO2NG1Ys35s6koUZ3Wm+JZnWEVDfXsXaDA8M4vXfXzNMV9+EWXA8Z7rf+DNR0oXoviXmTm6yHfIhTqUzokGt+uk0KdBHCQ6G+DwCNhYz2pI6OdGQpHO8Wbyx3FoY8OaKCSa44EJSskLVLAum6VKwyPVkuLOseQCalzjHQPsbiXYV1eQ9arunyob7dBi8PTFcmCETNAwXYTws7rtHl+B53jNt2l75SbGJ+gsXdddC04NDQ8YQKwgdbbe3tTJiyVeNAErUu0Dsalv8QYLQZ/KYdkodPJmm1QYWrdGiytcNhMrdHb7kItAyEUOZVJoA+qX24NXfcgCaGl6mN8uQDz4LKQJbiakIKNL+jaT2ChL4v6OT214w8PFoIcDdQUbyJqA/3jbKpCJhXVo1xTzRkVBxfEwNflDGFZBBj1bpxJmpM2P9m0EtahQWylgv4UNoIjxllJBgflgVuHSIrL3BjUEXMgm68i1zjcdAsYrJ0SdPJ56fLK1mEvP6Gzis1shrCYX3edOYxOEpfBJNKy3bbAAdimjr2MA33EWLWNjLznpKeLOxKDEuEFUOz07cmo6z4Pvdse4rDHipis=
-  template:
-    data: null
-    metadata:
-      annotations:
-        sealedsecrets.bitnami.com/cluster-wide: "true"
-      creationTimestamp: null
-      name: bank-oidc-adminuser
-      namespace: bank-infra
-    type: Opaque
+  refreshInterval: "15s"
+  secretStoreRef:
+    name: secretstore-vault
+    kind: ClusterSecretStore
+  target:
+    name: bank-oidc-adminuser
+  data:
+  - secretKey: APP_ID_ADMIN_PASSWORD
+    remoteRef:
+      key: example-bank/bank-oidc-adminuser
+      property: APP_ID_ADMIN_PASSWORD
+  - secretKey: APP_ID_ADMIN_USER
+    remoteRef:
+      key: example-bank/bank-oidc-adminuser
+      property: APP_ID_ADMIN_USER
