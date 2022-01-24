@@ -15,10 +15,6 @@ spec:
         app: transaction-service
       annotations:
         sidecar.istio.io/inject: "false"
-  volumes:
-  - name: cert-configmap-volume
-    configMap:
-      name: cert-configmap
     spec:
       containers:
       - name: transaction-service
@@ -39,6 +35,4 @@ spec:
           value: "http://process-transaction.bank-infra.svc.cluster.local"
         - name: WLP_LOGGING_CONSOLE_LOGLEVEL
           value: INFO
-        volumeMounts:
-        - name: cert-configmap-volume
-          mountPath: /opt/ol/wlp/usr/servers/defaultServer/resources/security
+
