@@ -13,9 +13,9 @@ spec:
   data:
   - secretKey: APP_ID_ADMIN_PASSWORD
     remoteRef:
-      key: example-bank/bank-oidc-adminuser
+      key: new-example-bank/bank-oidc-adminuser
       property: APP_ID_ADMIN_PASSWORD
   - secretKey: APP_ID_ADMIN_USER
     remoteRef:
-      key: example-bank/bank-oidc-adminuser
+      key: new-example-bank/bank-oidc-adminuser
       property: APP_ID_ADMIN_USER
