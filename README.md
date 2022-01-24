@@ -53,4 +53,6 @@ oc apply -k transaction-service/acm-resources
 oc apply -k user-service/acm-resources
 oc apply -k mobile-simulator/acm-resources
 oc apply -k bank-knative-service/acm-resources
+oc create -f serverless-operator/acm-resources/namespace.yaml
+oc apply -k serverless-operator/acm-resources
 ```
