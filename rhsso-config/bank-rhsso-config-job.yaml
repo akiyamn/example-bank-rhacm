@@ -1,0 +1,20 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: bank-rhsso-config
+  namespace: bank-infra
+  labels:
+    app: bank-rhsso-config
+spec:
+  template:
+    metadata:
+      name: bank-rhsso-config
+    spec:
+      containers:
+        - name: bank-rhsso-config
+          image: quay.io/alexocc/bank-rhsso-config2 # Temporary test that creates banksso2
+          envFrom:
+            - secretRef:
+                name: bank-rhsso-secrets
+          imagePullPolicy: Always
+      restartPolicy: Never
