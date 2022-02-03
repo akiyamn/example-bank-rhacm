@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: bank-rhsso-config
-          image: quay.io/alexocc/bank-rhsso-config2 # Temporary test that creates banksso2
+          image: quay.io/alexocc/bank-rhsso-config
           envFrom:
             - secretRef:
                 name: bank-rhsso-secrets
