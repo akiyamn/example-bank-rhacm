@@ -40,7 +40,18 @@ oc apply -k bank-knative-service/acm-resources
 ### RHSSO Setup
 The app uses Red Hat Single Sign On (RHSSO) but can also be used with Keycloak (the upstream community version of the project). It uses this service to identify and authenticate users.
 
-At the moment this section is not automated and must be done manually:
+#### Automatic
+The automatic process uses a Job object which pull a container from [this quay.io repo](https://quay.io/repository/alexocc/bank-rhsso-config). Its source is available from [akiyamn/rhsso-auto-deploy](https://github.com/akiyamn/rhsso-auto-deploy).
+
+Log into OpenShift and apply the Job as follows:
+```bash
+oc apply rhsso-config
+```
+This should create the Job and also the External Secret object it references. For reference on the secrets used by the Job, please see [this section of secrets.md](secrets.md#bank-rhsso-secrets).
+
+If you would prefer to use a normal secret or simply hard-code the environment variables required by the Job, edit `rhsso-config/bank-rhsso-config-job.yaml`.
+
+#### Manual
 
 - Open your RHSSO management console and login as an admin using in the master realm.
 - Click "Create New Realm" and click "Import".
@@ -92,4 +103,5 @@ oc delete -k transaction-service/acm-resources
 oc delete -k user-service/acm-resources
 oc delete -k mobile-simulator/acm-resources
 oc delete -k bank-knative-service/acm-resources
+oc delete -k rhsso-config
 ```
