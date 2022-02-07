@@ -13,6 +13,32 @@ The purpose of this repo is to provide an easy and automated way of deploying th
 
 ## Installation
 
+### Forking the repo (optional)
+It is possible to install the example bank app without cloning or forking this repo. This is simpler, however you won't have the freedom to match keys and values to your situation. As this repo is designed for use on RHACM, the Channel and Subscription objects attempt to pull the YAML resources from a git repo. It is set-up to pull from this exact repo, referring to it via URL. You must change this if you intend to use your own fork.
+
+#### Change the GitHub URL and branch
+If forking this repo, you must change the value of `spec/pathname` in each of the following files:
+```
+user-service/acm-resources/channel.yaml
+transaction-service/acm-resources/channel.yaml
+mobile-simulator/acm-resources/channel.yaml
+bank-knative-service/acm-resources/channel.yaml
+```
+By default, the branch in this GitHub that the Channel and Subscription objects pull from is set to: `main`.
+If needed, you can change this by editing this part:
+```yaml
+metadata:
+  annotations:
+    apps.open-cluster-management.io/git-branch: YOUR-BRANCH-NAME-HERE
+```
+of the following files:
+```
+user-service/acm-resources/subscription.yaml
+transaction-service/acm-resources/subscription.yaml
+mobile-simulator/acm-resources/subscription.yaml
+bank-knative-service/acm-resources/subscription.yaml
+```
+
 ### External Secrets
 This application uses external secrets stored in a vault such as a Hashicorp Vault for configuration.
 They must be manually created in the vault application and set with appropriate values.
@@ -81,7 +107,6 @@ DB_PORTNUMBER: NTQzMg==
 DB_SERVERNAME: Y3JlZGl0ZGI=
 DB_USER: cG9zdGdyZXM=
 ```
-
 
 ## Cleanup
 
