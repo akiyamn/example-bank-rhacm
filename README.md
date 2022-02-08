@@ -1,8 +1,8 @@
 # Example bank app deployment scripts for RHACM
-This repo contains the scripts needed to automatically deploy the akiyamn/example-bank app to Openshift clusters via RHACM.
+This repo contains the scripts needed to automatically deploy the [akiyamn/example-bank](https://github.com/akiyamn/example-bank) app to Openshift clusters via RHACM.
 
 ## Introduction
-The purpose of this repo is to provide an easy and automated way of deploying the akiyamn/example-bank to Red Hat Advanced Cluster Management (RHACM) which will then automatically deploy on the Openshift clusters that RHACM is controlling. The deployment is done by using precompiled binaries hosted on quay.io. For the source: visit akiyamn/example-bank.
+The purpose of this repo is to provide an easy and automated way of deploying the [akiyamn/example-bank](https://github.com/akiyamn/example-bank) to Red Hat Advanced Cluster Management (RHACM) which will then automatically deploy on the Openshift clusters that RHACM is controlling. The deployment is done by using precompiled binaries hosted on quay.io. For the source: visit [akiyamn/example-bank](https://github.com/akiyamn/example-bank).
 
 ## Prerequisites
 - A hub cluster running RHACM
