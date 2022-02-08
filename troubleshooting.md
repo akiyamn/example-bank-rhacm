@@ -7,8 +7,16 @@ In the GUI, go to the logs of that pod, then click on 'Events'. It should specif
 
 ### Add a secret to your external secret provider (e.g. Vault)
 This repo is set up to use External Secrets from a provider such as Hashicorp vault.
-You may need to check the following manifests and change the path to the secret if it doesn't match your configuration. 
 By default, this repo uses the `new-example-bank` directory to store secrets, which may need to be changed in your case.
+You may need to check the following manifests and change the path to the secret if it doesn't match your configuration. 
+
+```
+transaction-service/transaction-service/bank-appid-secret.yaml
+transaction-service/transaction-service/bank-db-secret.yaml
+transaction-service/transaction-service/bank-oidc-secret.yaml
+bank-knative-service/bank-knative-service/bank-oidc-adminuser.yaml
+mobile-simulator/mobile-simulator/mobile-simulator-secrets.yaml
+```
 Make sure that each of the required secrets are added into Hashicorp vault so they can be propagated properly.
 
 ### If you don't have an external secret provider

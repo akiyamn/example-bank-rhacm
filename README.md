@@ -41,6 +41,7 @@ bank-knative-service/acm-resources/subscription.yaml
 
 ### External Secrets
 This application uses external secrets stored in a vault such as a Hashicorp Vault for configuration.
+They are stored in the `new-example-bank` directory inside of Vault, however this can be changed by editing each of the Secret manifests.
 They must be manually created in the vault application and set with appropriate values.
 For more information: see [secrets.md](secrets.md).
 
@@ -118,6 +119,9 @@ DB_PORTNUMBER: NTQzMg==
 DB_SERVERNAME: Y3JlZGl0ZGI=
 DB_USER: cG9zdGdyZXM=
 ```
+
+## Troubleshooting
+For troubleshooting tips, visit [troubleshooting.md](troubleshooting.md).
 
 ## Cleanup
 
