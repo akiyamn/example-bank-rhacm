@@ -123,6 +123,9 @@ DB_USER: cG9zdGdyZXM=
 ## Troubleshooting
 For troubleshooting tips, visit [troubleshooting.md](troubleshooting.md).
 
+## Testing
+For troubleshooting tips, visit [testing.md](testing.md).
+
 ## Cleanup
 
 The following commands will reverse the actions of deploying the application. Run them in the hub cluster as before.
