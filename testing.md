@@ -3,11 +3,12 @@
 **Note** The user database in RHSSO and in the application (stored in CockroachDB) are separate. It is possible to have a user created in one and not the other when the app is not fully functional. When the app is fully functional, these two sources are more or less syncronised.
 
 ## RHSSO realm creation
-1. Run the rhsso-integration-bank-app Job on the hub cluster (or just enable in in ArgoCD).
+1. Run the `rhsso-integration-bank-app` Job on the hub cluster (or just enable in in ArgoCD).
 2. Go to the RHSSO admin portal and login as an admin.
 3. Click on the created realm called `banksso`.
 4. Click on "Clients" and you should see a client named `nodeclient`.
 5. Click on "Users", then "Show all users". You should see a user called `knative`.
+6. Optionally check the logs of the completed `rhsso-integration-bank-app` Job in `sso-integration` on the hub cluster.
 
 ## Front end visible
 1. Enable the `mobile-simulator` application in the 3-apps `kustomization.yaml`.
