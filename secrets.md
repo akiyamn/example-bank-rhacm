@@ -6,10 +6,8 @@ They are:
 - `bank-db-secret`
 - `bank-oidc-secret`
 - `mobile-simulator-secrets`
+- `bank-oidc-adminuser` (optional, for Knative)
 - `bank-rhsso-secrets` (optional, only for auto RHSSO config)
-- `bank-oidc-adminuser` (soon to be removed)
-- `bank-appid-secret` (soon to be removed)
-
 
 
 ## `bank-db-secret`
@@ -41,6 +39,26 @@ The `OIDC_JWKENDPOINTURL` value can be found by going to a URL similar to: https
 |`PROXY_TRANSACTION_MICROSERVICE`|Local k8s URL pointing to the transaction microservice (use example value)|`transaction-service:9080`|
 |`PROXY_USER_MICROSERVICE`|Local k8s URL pointing to the user microservice (use example value)|`user-service:9080`|
 
+## `mobile-simulator-secrets`
+|Variable Name|Description|Example|
+|-|-|-|
+|`APP_ID_CLIENT_ID`|Name of the client in RHSSO|`nodeclient`|
+|`APP_ID_CLIENT_SECRET`|Secret used by the client service account in RHSSO|`f1661a24-85cc-81ad-0094-ab3d202566b4`|
+|`APP_ID_TOKEN_URL`|URL of the RHSSO API endpoint for getting login tokens (without the `/login`)|`https://keycloak.my-app.local/auth/realms/banksso/protocol/openid-connect`|
+|`PROXY_TRANSACTION_MICROSERVICE`|Local k8s URL pointing to the transaction microservice (use example value)|`transaction-service:9080`|
+|`PROXY_USER_MICROSERVICE`|Local k8s URL pointing to the user microservice (use example value)|`user-service:9080`|
+
+## `bank-oidc-adminuser`
+This is only needed for the code that will be run using Knative, not Knative itself.
+If this is excluded, the app will still function but the points system will not work.
+
+Set the value to the example value provided if automatically setting up the RHSSO config.
+
+|Variable Name|Description|Example|
+|-|-|-|
+|`APP_ID_ADMIN_USER`|User name of any user in RHSSO (in `banksso` realm)|`knative`|
+|`APP_ID_ADMIN_PASSWORD`|Password of the above user in RHSSO (in `banksso` realm)|`knative`|
+
 ## `bank-rhsso-secrets`
 Note: These secrets are only needed for the automatic configuration of RHSSO to add the realm and client. You only need it if you are using the provided Job yaml in its provided state. You may find it more convenient to modify the Job yaml directly, to make it fit with your existing ConfigMaps or Secrets.
 
@@ -50,5 +68,3 @@ Note: These secrets are only needed for the automatic configuration of RHSSO to 
 |`RHSSO_ADMIN_PASSWORD`|Password of the admin of RHSSO (in `master` realm)|`C8FdaN26aqUN43==`|
 |`RHSSO_BASE_URL`|Base URL of the RHSSO instance|`https://keycloak.my-app.local`|
 
-## Others
-`bank-oidc-adminuser` and `bank-appid-secret` are no longer needed and will be removed soon. For now, these values can be set to anything.
