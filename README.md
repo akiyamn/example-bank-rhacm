@@ -39,6 +39,10 @@ mobile-simulator/acm-resources/subscription.yaml
 bank-knative-service/acm-resources/subscription.yaml
 ```
 
+## Prepare cluster set
+This app will deploy to all clusters within a cluster set called `multicloud-cluster-set`.
+Make sure all of the requirements are present or accessible in this cluster set. 
+
 ### External Secrets
 This application uses external secrets stored in a vault such as a Hashicorp Vault for configuration.
 They are stored in the `new-example-bank` directory inside of Vault, however this can be changed by editing each of the Secret manifests.
