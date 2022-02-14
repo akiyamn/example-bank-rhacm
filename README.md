@@ -71,12 +71,14 @@ oc apply -k bank-knative-service/acm-resources
 ### RHSSO Setup
 The app uses Red Hat Single Sign On (RHSSO) but can also be used with Keycloak (the upstream community version of the project). It uses this service to identify and authenticate users.
 
+The end result of this process should be to create a realm called `banksso` with a client called `nodeclient` and a user called `knative`.
+
 #### Automatic
 The automatic process uses a Job object which pull a container from [this quay.io repo](https://quay.io/repository/alexocc/bank-rhsso-config). Its source is available from [akiyamn/rhsso-auto-deploy](https://github.com/akiyamn/rhsso-auto-deploy).
 
 Log into OpenShift and apply the Job as follows:
 ```bash
-oc apply rhsso-config
+oc apply rhsso-integration-bank-app
 ```
 This should create the Job and also the External Secret object it references. For reference on the secrets used by the Job, please see [this section of secrets.md](secrets.md#bank-rhsso-secrets).
 
@@ -84,15 +86,25 @@ If you would prefer to use a normal secret or simply hard-code the environment v
 
 #### Manual
 
-- Open your RHSSO management console and login as an admin using in the master realm.
-- Click "Create New Realm" and click "Import".
-- Select the `rhsso-config/realm-export` file.
+1. Open your RHSSO management console and login as an admin using in the master realm.
+2. Click "Create New Realm" and click "Import".
+3. Select the `rhsso-config/realm-export` file.
 
 This should create a realm called `banksso` and a client within that realm called `nodeclient`.
+
 The client should have "Service Accounts Enabled" enabled. It also should have the Service Account Role of `manage-users` under the client role of `realm-management`.
 
 This can be verified as so:
 ![](https://i.imgur.com/ysWVq7g.png)
+
+4. Next, click on Users and click "Add User"
+5. Specify the string: `knative` as the username and click "Save"
+6. Click on your newly created user, then click the "Credentials" tab
+7. In the "Reset Password" section, specify the string `knative` in both boxes
+8. Set "Temporary" to Off
+9. Click "Reset Password", then confirm the following prompt.
+
+This user is required by the Knative script. Make sure to specify `knative` as the username and password in the [bank-db-secret](secrets.md/#bank-db-secret) secret.
 
 ### Database (optional)
 The goal of this application is to use a distributed Postgres database service such as CockroachDB or CrunchyDB. However, a script to deploy a basic Postgres instance for testing (or a single cluster) is provided. To deploy it, log into each of your managed clusters and run:
