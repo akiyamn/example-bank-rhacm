@@ -1,9 +1,0 @@
----
-apiVersion: apps.open-cluster-management.io/v1
-kind: Channel
-metadata:
-  name: serverless-operator-app-latest
-  namespace: openshift-serverless
-spec:
-  pathname: https://github.com/waynedovey/example-bank.git
-  type: GitHub
